@@ -1,5 +1,14 @@
 import { Meta, StoryObj } from "@storybook/nextjs";
 import UserCard, { UserCardProps } from "./UserCard";
+import { vi } from "vitest";
+
+// 👉 Mock useRouter từ next/navigation (Next 13+)
+vi.mock("next/navigation", () => ({
+  useRouter: () => ({
+    push: vi.fn(),
+    prefetch: vi.fn(),
+  }),
+}));
 
 const meta: Meta<UserCardProps> = {
   title: "Components/UserCard",
